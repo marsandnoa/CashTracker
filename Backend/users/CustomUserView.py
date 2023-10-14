@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.hashers import make_password
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
-from .serializers import CustomUserSerializerFull,CustomUserSerializerPartial
-from .models import CustomUser
+from .serializers import CustomUserSerializerFull,CustomUserSerializerPartial, BudgetSerializer
+from .models import CustomUser, Budget
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
@@ -12,16 +12,27 @@ from rest_framework.permissions import IsAuthenticated
 @api_view(['POST'])
 def create_my_CustomUser(request):
     if request.method == 'POST':
-        serializer = CustomUserSerializerFull(data=request.data)
-        
-        if serializer.is_valid():
+        user_serializer = CustomUserSerializerFull(data=request.data)
+
+        if user_serializer.is_valid():
             hashed_password = make_password(request.data.get('password'))
-            serializer.validated_data['password'] = hashed_password
-            serializer.save()  
+            user_serializer.validated_data['password'] = hashed_password
+            user = user_serializer.save()
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            budget_data = {
+                'user': user.id,
+                'budgetname': f'{user.email} Budget'
+            }
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            budget_serializer = BudgetSerializer(data=budget_data)
+            if budget_serializer.is_valid():
+                budget_serializer.save()
+                return Response(user_serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                user.delete()
+                return Response(budget_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

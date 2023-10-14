@@ -2,23 +2,24 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
-from .models import BudgetEntry
-from .serializers import BudgetEntrySerializer
+from .models import BudgetEntry, Budget
+from .serializers import BudgetEntrySerializer, BudgetSerializer
 
 @api_view(['POST'])
 def create_budget_entry(request):
     if request.method == 'POST':
             budget_id = request.data.get('budget_id')
-            date = request.data.get('date')
-            recurrence = request.data.get('recurrence')
+            #date = request.data.get('date')
+            #recurrence = request.data.get('recurrence')
             amount = request.data.get('amount')
+            name=request.data.get('name')
 
-            if not budget_id or not date or not recurrence or not amount:
-                return Response({'error': 'All fields (budget_id, date, recurrence, amount) are required'}, status=status.HTTP_400_BAD_REQUEST)
+            #if not budget_id or not date or not recurrence or not amount:
+            #    return Response({'error': 'All fields (budget_id, date, recurrence, amount) are required'}, status=status.HTTP_400_BAD_REQUEST)
 
             try:
                 budget = get_object_or_404(Budget, id=budget_id)
-                budget_entry = BudgetEntry.objects.create(budget=budget, date=date, recurrence=recurrence, amount=amount)
+                budget_entry = BudgetEntry.objects.create(budget=budget, name=name, amount=amount)
                 serializer = BudgetEntrySerializer(budget_entry)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             except Budget.DoesNotExist:
@@ -61,13 +62,10 @@ def update_budget_entry(request, pk):
 
 @api_view(['DELETE'])
 def delete_budget_entry(request, pk):
-    try:
-        budget_entry = BudgetEntry.objects.get(pk=pk)
-    except BudgetEntry.DoesNotExist:
-        return Response({'error': 'BudgetEntry not found'}, status=status.HTTP_404_NOT_FOUND)
-
+    budget_entry = get_object_or_404(BudgetEntry, pk=pk)
     budget_entry.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(['GET'])
 def get_budget_entries_by_budget_id(request, budget_id):

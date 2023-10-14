@@ -28,8 +28,7 @@ class Budget(models.Model):
 class BudgetEntry(models.Model):
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE, related_name='expenses')
     name = models.CharField(max_length=100)
-    date = models.DateField()
-    recurrence= models.DurationField()
+    #recurrence= models.DurationField()
     amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):

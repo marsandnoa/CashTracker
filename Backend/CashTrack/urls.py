@@ -38,6 +38,6 @@ urlpatterns = [
     path('budgetentry/findall/', BudgetEntryView.get_all_budget_entries, name='get_all_budget_entries'),
     path('budgetentry/findbyid/<int:budget_entry_id>/', BudgetEntryView.get_budget_entry_by_id, name='get_budget_entry_by_id'),
     path('budgetentry/findbybudgetid/<int:budget_id>/', BudgetEntryView.get_budget_entries_by_budget_id, name='get_budget_entry_by_Budget_id'),
-    path('budgetentry/update/<int:pk>/', BudgetEntryView.update_budget_entry, name='update_budget_entry'),
-    path('budgetentry/delete/<int:pk>/', BudgetEntryView.delete_budget_entry, name='delete_budget_entry'),
+    path('budgetentry/update/<int:pk>', BudgetEntryView.update_budget_entry, name='update_budget_entry'),
+    path('budgetentry/delete/<int:pk>', BudgetEntryView.delete_budget_entry, name='delete_budget_entry'),
 ]
