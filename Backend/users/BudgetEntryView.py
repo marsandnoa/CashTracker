@@ -9,17 +9,13 @@ from .serializers import BudgetEntrySerializer, BudgetSerializer
 def create_budget_entry(request):
     if request.method == 'POST':
             budget_id = request.data.get('budget_id')
-            #date = request.data.get('date')
-            #recurrence = request.data.get('recurrence')
+            yearlyTimes = request.data.get('yearlyTimes')
             amount = request.data.get('amount')
             name=request.data.get('name')
-
-            #if not budget_id or not date or not recurrence or not amount:
-            #    return Response({'error': 'All fields (budget_id, date, recurrence, amount) are required'}, status=status.HTTP_400_BAD_REQUEST)
-
+            monthlyAmount = (float(1) / float(12)) * float(amount)*float(yearlyTimes)
             try:
                 budget = get_object_or_404(Budget, id=budget_id)
-                budget_entry = BudgetEntry.objects.create(budget=budget, name=name, amount=amount)
+                budget_entry=BudgetEntry.objects.create(budget=budget, name=name, monthlyAmount=monthlyAmount, yearlyTimes=yearlyTimes, amount=amount)
                 serializer = BudgetEntrySerializer(budget_entry)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             except Budget.DoesNotExist:

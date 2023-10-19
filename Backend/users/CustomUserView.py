@@ -21,7 +21,9 @@ def create_my_CustomUser(request):
 
             budget_data = {
                 'user': user.id,
-                'budgetname': f'{user.email} Budget'
+                'budgetname': f'{user.email} Budget',
+                'monthlyPayment': 0,
+                'yearlyIncome': 0,
             }
 
             budget_serializer = BudgetSerializer(data=budget_data)
@@ -35,7 +37,6 @@ def create_my_CustomUser(request):
         return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_all_my_CustomUsers(request):
         my_CustomUsers = CustomUser.objects.all()
 
