@@ -34,7 +34,7 @@ const App = () => {
     };
     fetchData();
   }, [userData.id]);
-  
+
   const calculateTotalYearlyCost = (monthlyPayment) => {
     if (monthlyPayment !== null) {
       const yearlyCost = parseFloat(monthlyPayment) * 12;
@@ -58,6 +58,7 @@ const App = () => {
         budgetname: budgets.budgetname,
         yearlyIncome: yearlyIncome,
         monthlyPayment: budgets.monthlyPayment,
+        effectiveInterestRate: budgets.effectiveInterestRate,
       }
       const response = await fetch(`http://127.0.0.1:8000/budget/update/${userData.id}/`, {
         method: "PUT",

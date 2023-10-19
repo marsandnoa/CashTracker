@@ -6,10 +6,11 @@ import Auth from './Login/Auth';
 import Homepage from './Pages/Homepage';
 import Budget from './Pages/Budget';
 import Savings from './Pages/Savings';
+import Interest from './Pages/Interest';
 import { UserProvider } from './UserContext';
 function App() {
   const location = useLocation();
-  const layoutRoutes = ['/Main', '/Budget','/Savings']; // Routes that should have the Layout
+  const layoutRoutes = ['/Main', '/Budget','/Savings','/Interest']; // Routes that should have the Layout
   const shouldHaveLayout = layoutRoutes.includes(location.pathname);
 
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path='/Main' element={<Main />} />
             <Route path='/Budget' element={<Budget />} />
             <Route path='/Savings' element={<Savings />} />
+            <Route path='/Interest' element={<Interest />} />
           </Routes>
         </Layout>
       ) : (

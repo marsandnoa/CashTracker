@@ -150,6 +150,7 @@ const App = () => {
           budgetname: budgets.budgetname,
           yearlyIncome:budgets.yearlyIncome,
           monthlyPayment: totalAmount.toFixed(2),
+          effectiveInterestRate: budgets.effectiveInterestRate,
         }
         const response = await fetch(`http://127.0.0.1:8000/budget/update/${userData.id}/`, {
           method: "PUT",

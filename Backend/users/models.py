@@ -23,6 +23,7 @@ class Budget(models.Model):
     budgetname = models.CharField(max_length=100)
     monthlyPayment=  models.DecimalField(max_digits=10, decimal_places=2)
     yearlyIncome=models.DecimalField(max_digits=10, decimal_places=2)
+    effectiveInterestRate=models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):
         return self.user.email

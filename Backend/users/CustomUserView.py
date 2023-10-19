@@ -24,6 +24,7 @@ def create_my_CustomUser(request):
                 'budgetname': f'{user.email} Budget',
                 'monthlyPayment': 0,
                 'yearlyIncome': 0,
+                'effectiveInterestRate': .07,
             }
 
             budget_serializer = BudgetSerializer(data=budget_data)
@@ -118,7 +119,8 @@ def login_custom_user(request):
                 'username': user.username,
                 'email': user.email,
                 'fullname': user.fullname,
-                'id': user.id
+                'id': user.id,
+                'effectiveInterestRate': .07
             }
 
             return Response({'token': token.key, 'user': user_data, 'message': 'Login successful'}, status=status.HTTP_200_OK)
