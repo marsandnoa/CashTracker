@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const firstResponse = await fetch(`http://127.0.0.1:8000/budget/findbyid/${userData.id}/`, {
+        const firstResponse = await fetch(`http://18.189.150.72:8000/budget/findbyid/${userData.id}/`, {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const App = () => {
         effectiveInterestRate: effectiveInterestRate,
       };
       console.log(attemptData);
-      const response = await fetch(`http://127.0.0.1:8000/budget/update/${userData.id}/`, {
+      const response = await fetch(`http://18.189.150.72:8000/budget/update/${userData.id}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

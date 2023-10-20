@@ -33,7 +33,7 @@ const App = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/budgetentry/delete/"+selectedBudgetEntry.id, {
+      const response = await fetch("http://18.189.150.72:8000/budgetentry/delete/"+selectedBudgetEntry.id, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const App = () => {
       let response;
   
       if (isNewEntry) {
-        response = await fetch("http://127.0.0.1:8000/budgetentry/create/", {
+        response = await fetch("http://18.189.150.72:8000/budgetentry/create/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const App = () => {
           body: JSON.stringify(attemptData),
         });
       } else {
-        response = await fetch("http://127.0.0.1:8000/budgetentry/update/" + selectedBudgetEntry.id, {
+        response = await fetch("http://18.189.150.72:8000/budgetentry/update/" + selectedBudgetEntry.id, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -149,7 +149,7 @@ const App = () => {
           monthlyPayment: totalAmount.toFixed(2),
           effectiveInterestRate: budgets.effectiveInterestRate,
         }
-        const response = await fetch(`http://127.0.0.1:8000/budget/update/${userData.id}/`, {
+        const response = await fetch(`http://18.189.150.72:8000/budget/update/${userData.id}/`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -172,7 +172,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const firstResponse = await fetch(`http://127.0.0.1:8000/budget/findbyid/${userData.id}/`, {
+        const firstResponse = await fetch(`http://18.189.150.72:8000/budget/findbyid/${userData.id}/`, {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',
@@ -185,7 +185,7 @@ const App = () => {
           setBudgets(firstData);
 
           try {
-            const secondResponse = await fetch(`http://127.0.0.1:8000/budgetentry/findbybudgetid/${firstData.id}/`, {
+            const secondResponse = await fetch(`http://18.189.150.72:8000/budgetentry/findbybudgetid/${firstData.id}/`, {
               method: "GET",
               headers: {
                 'Content-Type': 'application/json',
