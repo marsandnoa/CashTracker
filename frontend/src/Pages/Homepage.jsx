@@ -57,7 +57,7 @@ const Homepage = () => {
         App Details
       </h1>
       <p className="text-center text-xl text-cream p-5">
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+      This app is an exercise for Noah to practice React and Django
       </p>
 
       <div className="flex justify-center items-center">
@@ -70,10 +70,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           >
             <img className="w-28 h-28" src={moneyBundle} alt="largeFish" />
             <li>
-              Lorem Ipsum 
+              Budgeting
               {selected === "Image One" && (
                 <div className="info-container text-gray-500">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                  Allows adding a budget and viewing a budget. Gives monthly budgeting estimates
                 </div>
               )}
             </li>
@@ -84,10 +84,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           >
             <img className="w-28 h-28" src={moneyBundle} alt="moneyBundle" />
             <li>
-              Lorem Ipsum
+              Interest Rates
               {selected === "Image Two" && (
                 <div className="info-container text-gray-500">
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                Allows calculating the effective interest rate of assets dispersed across different types
                 </div>
               )}
             </li>
@@ -98,24 +98,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           >
             <img className="w-28 h-28" src={moneyBundle} alt="moneyBundle" />
             <li>
-              Lorem Ipsum
+              Net Worth Projections
               {selected === "Image Three" && (
                 <div className="text-gray-500 info-container">
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                </div>
-              )}
-            </li>
-          </div>
-          <div
-            className="flex flex-col items-center mx-4 px-4 cursor-pointer clickable-div"
-            onClick={() => toggleInfo("Image Four")}
-          >
-            <img className="w-28 h-28" src={moneyBundle} alt="moneyBundle" />
-            <li>
-              Lorem Ipsum
-              {selected === "Image Four" && (
-                <div className="text-gray-500 info-container">
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                Allows calculating net worth projections based on income and expenses
                 </div>
               )}
             </li>
