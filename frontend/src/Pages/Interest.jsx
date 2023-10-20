@@ -73,6 +73,7 @@ const App = () => {
       stocks: 7,
       bonds: 5,
       savings: 3,
+      cash: 0,
     };
 
     const totalInterestRate = inputItems.reduce((sum, item) => {
@@ -107,8 +108,8 @@ const App = () => {
     };
   
     return items.map((item, index) => (
-      <div key={index} className="mb-3">
-        <label htmlFor={`inputItem-${index}`}>
+      <div key={index} className="mb-3 border border-green-500">
+        <label htmlFor={`inputItem-${index}`} className="font-bold">
           {item.charAt(0).toUpperCase() + item.slice(1)} Interest Rate ({interestRates[item]}):
         </label>
         <input
@@ -123,28 +124,29 @@ const App = () => {
   };
   
   
-
   return (
     <div>
-      <div>
-        <h1 className="text-3xl font-bold text-green-500 py-4 border-b-2 border-green-500">
-          Budget for {userData.fullname}
-        </h1>
-        <div>
+      <h1 className="text-3xl font-bold text-green-500 py-4 border-b-2 border-green-500">
+        Interest Rate
+      </h1>
+      <div className="flex flex-col justify-center items-center text-center">
+      <h1 className="text-3xl font-bold text-green-500 py-4 border-b-2 border-green-500">
+        {userData.fullname} Interest Rate
+      </h1>
+        <div className="mb-4">
           <p>Type in the percentage of your money that you want to put into each asset class</p>
-          <p>You can also type in the ratio that you want to put into each grouping, e.g , 2$ in bonds for every 1$ in stocks</p>
+          <p>You can also type in the ratio that you want to put into each grouping, e.g, 2$ in bonds for every 1$ in stocks</p>
           <p>This calculates the effective interest rate to apply to your total savings</p>
         </div>
-        <div>
-          <p>Effective Interest Rate: {effectiveInterestRate}%</p>
+        <div className="mb-4">
+          <p className="font-bold">Effective Interest Rate: {effectiveInterestRate}%</p>
+          {renderInputItems()}
+          <button onClick={() => updateEffectiveInterestRate()} className="mt-4 border border-black">Click to update Interest Rate</button>
         </div>
       </div>
-
-      {renderInputItems()}
-
-      <button onClick={() => updateEffectiveInterestRate()}>Update Effective Interest Rate</button>
     </div>
   );
+  
 };
 
 export default App;

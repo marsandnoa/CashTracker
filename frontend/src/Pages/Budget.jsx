@@ -15,9 +15,6 @@ const App = () => {
   const [totalMonthlyAmount, setTotalMonthlyAmount] = useState(0);
   const [amount, setAmount] = useState('');
   const [name, setName] = useState('');
-  const handleViewClick = () => {
-    navigate('/Main');
-  };
 
   const handleNewEntry = () => {
     setAmount("");
