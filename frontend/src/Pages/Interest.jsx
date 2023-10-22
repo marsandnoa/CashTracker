@@ -139,9 +139,9 @@ const App = () => {
           <p>This calculates the effective interest rate to apply to your total savings</p>
         </div>
         <div className="mb-4">
-          <p className="font-bold">Effective Interest Rate: {effectiveInterestRate}%</p>
+          <p className="font-bold">Effective Interest Rate: {effectiveInterestRate.toFixed(2)}%</p>
           {renderInputItems()}
-          <button onClick={() => updateEffectiveInterestRate()} className="mt-4 border border-black">Click to update Interest Rate</button>
+          <button onClick={() => updateEffectiveInterestRate()} className="mt-4 border border-black px-2">Click to update Interest Rate</button>
         </div>
       </div>
     </div>
