@@ -122,8 +122,8 @@ useEffect(() => {
               <span className="font-bold">Your Yearly Income including Cost:</span> {yearlyIncomeDiff}
             </p>
             <p className="font-bold text-xl text-red-500">Click Update to view Table!</p>
-            <label htmlFor="yearlyIncome" className="font-bold">Yearly Income:</label>
-            <input
+            <label htmlFor="yearlyIncome" className="font-bold border border-black">Yearly Income:</label>
+            <input className="border border-black"
               type="text"
               id="yearlyIncome"
               placeholder="Enter your yearly income"
