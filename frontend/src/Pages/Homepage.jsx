@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
 import moneyVideo from "../Homepage Components/moneyVideo.mp4";
 import moneyBundle from "../Homepage Components/moneyBundle.png";
-//import moneyBundle from "../Homepage Components/moneyBundle.png";
-//import moneyBundle from "../Homepage Components/moneyBundle.png";
-//import moneyBundle from "../Homepage Components/moneyBundle.png";
+import money from "../Homepage Components/money.png";
+import dollarsign from "../Homepage Components/dollarsign.png";
 import "../Homepage Components/Homepage.css";
 
 const Homepage = () => {
@@ -68,7 +67,7 @@ const Homepage = () => {
             }`}
             onClick={() => toggleInfo("Image One")}
           >
-            <img className="w-28 h-28" src={moneyBundle} alt="largeFish" />
+            <img className="w-28 h-28" src={money} alt="largeFish" />
             <li>
               Budgeting
               {selected === "Image One" && (
@@ -96,7 +95,7 @@ const Homepage = () => {
             className="flex flex-col items-center mx-4 px-4 cursor-pointer clickable-div"
             onClick={() => toggleInfo("Image Three")}
           >
-            <img className="w-28 h-28" src={moneyBundle} alt="moneyBundle" />
+            <img className="w-28 h-28" src={dollarsign} alt="moneyBundle" />
             <li>
               Net Worth Projections
               {selected === "Image Three" && (
